@@ -36,9 +36,10 @@
             this.optDefault = new System.Windows.Forms.RadioButton();
             this.optCustom = new System.Windows.Forms.RadioButton();
             this.txtCustom = new System.Windows.Forms.TextBox();
-            this.optIgnoredWords = new System.Windows.Forms.RadioButton();
-            this.optHardWords = new System.Windows.Forms.RadioButton();
+            this.optLearnedWords = new System.Windows.Forms.RadioButton();
             this.optAllWords = new System.Windows.Forms.RadioButton();
+            this.optNotLearnedWords = new System.Windows.Forms.RadioButton();
+            this.optHardWords = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +60,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.optIgnoredWords);
+            this.groupBox2.Controls.Add(this.optNotLearnedWords);
+            this.groupBox2.Controls.Add(this.optLearnedWords);
             this.groupBox2.Controls.Add(this.optHardWords);
             this.groupBox2.Controls.Add(this.optAllWords);
             this.groupBox2.Font = new System.Drawing.Font("更纱黑体 SC", 10.71429F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -73,17 +75,18 @@
             // btnStart
             // 
             this.btnStart.Font = new System.Drawing.Font("更纱黑体 SC", 10.71429F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnStart.Location = new System.Drawing.Point(709, 37);
+            this.btnStart.Location = new System.Drawing.Point(696, 285);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(275, 64);
             this.btnStart.TabIndex = 2;
             this.btnStart.Text = "开始";
             this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("更纱黑体 SC", 10.71429F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnExit.Location = new System.Drawing.Point(709, 117);
+            this.btnExit.Location = new System.Drawing.Point(696, 374);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(275, 64);
             this.btnExit.TabIndex = 3;
@@ -105,6 +108,7 @@
             // optDefault
             // 
             this.optDefault.AutoSize = true;
+            this.optDefault.Checked = true;
             this.optDefault.Location = new System.Drawing.Point(43, 159);
             this.optDefault.Name = "optDefault";
             this.optDefault.Size = new System.Drawing.Size(144, 40);
@@ -120,9 +124,9 @@
             this.optCustom.Name = "optCustom";
             this.optCustom.Size = new System.Drawing.Size(170, 40);
             this.optCustom.TabIndex = 2;
-            this.optCustom.TabStop = true;
             this.optCustom.Text = "自定义抽查";
             this.optCustom.UseVisualStyleBackColor = true;
+            this.optCustom.CheckedChanged += new System.EventHandler(this.optCustom_CheckedChanged);
             // 
             // txtCustom
             // 
@@ -131,27 +135,16 @@
             this.txtCustom.Size = new System.Drawing.Size(187, 41);
             this.txtCustom.TabIndex = 3;
             // 
-            // optIgnoredWords
+            // optLearnedWords
             // 
-            this.optIgnoredWords.AutoSize = true;
-            this.optIgnoredWords.Location = new System.Drawing.Point(41, 236);
-            this.optIgnoredWords.Name = "optIgnoredWords";
-            this.optIgnoredWords.Size = new System.Drawing.Size(170, 40);
-            this.optIgnoredWords.TabIndex = 5;
-            this.optIgnoredWords.TabStop = true;
-            this.optIgnoredWords.Text = "学会的单词";
-            this.optIgnoredWords.UseVisualStyleBackColor = true;
-            // 
-            // optHardWords
-            // 
-            this.optHardWords.AutoSize = true;
-            this.optHardWords.Location = new System.Drawing.Point(41, 159);
-            this.optHardWords.Name = "optHardWords";
-            this.optHardWords.Size = new System.Drawing.Size(170, 40);
-            this.optHardWords.TabIndex = 4;
-            this.optHardWords.TabStop = true;
-            this.optHardWords.Text = "困难的单词";
-            this.optHardWords.UseVisualStyleBackColor = true;
+            this.optLearnedWords.AutoSize = true;
+            this.optLearnedWords.Location = new System.Drawing.Point(41, 236);
+            this.optLearnedWords.Name = "optLearnedWords";
+            this.optLearnedWords.Size = new System.Drawing.Size(170, 40);
+            this.optLearnedWords.TabIndex = 5;
+            this.optLearnedWords.TabStop = true;
+            this.optLearnedWords.Text = "学会的单词";
+            this.optLearnedWords.UseVisualStyleBackColor = true;
             // 
             // optAllWords
             // 
@@ -164,6 +157,28 @@
             this.optAllWords.Text = "全部单词";
             this.optAllWords.UseVisualStyleBackColor = true;
             // 
+            // optNotLearnedWords
+            // 
+            this.optNotLearnedWords.AutoSize = true;
+            this.optNotLearnedWords.Checked = true;
+            this.optNotLearnedWords.Location = new System.Drawing.Point(41, 159);
+            this.optNotLearnedWords.Name = "optNotLearnedWords";
+            this.optNotLearnedWords.Size = new System.Drawing.Size(222, 40);
+            this.optNotLearnedWords.TabIndex = 6;
+            this.optNotLearnedWords.TabStop = true;
+            this.optNotLearnedWords.Text = "尚未学会的单词";
+            this.optNotLearnedWords.UseVisualStyleBackColor = true;
+            // 
+            // optHardWords
+            // 
+            this.optHardWords.AutoSize = true;
+            this.optHardWords.Location = new System.Drawing.Point(41, 310);
+            this.optHardWords.Name = "optHardWords";
+            this.optHardWords.Size = new System.Drawing.Size(170, 40);
+            this.optHardWords.TabIndex = 4;
+            this.optHardWords.Text = "困难的单词";
+            this.optHardWords.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
@@ -173,6 +188,7 @@
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.groupBox1.ResumeLayout(false);
@@ -193,9 +209,10 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.TextBox txtCustom;
-        private System.Windows.Forms.RadioButton optIgnoredWords;
-        private System.Windows.Forms.RadioButton optHardWords;
+        private System.Windows.Forms.RadioButton optLearnedWords;
         private System.Windows.Forms.RadioButton optAllWords;
+        private System.Windows.Forms.RadioButton optNotLearnedWords;
+        private System.Windows.Forms.RadioButton optHardWords;
     }
 }
 
