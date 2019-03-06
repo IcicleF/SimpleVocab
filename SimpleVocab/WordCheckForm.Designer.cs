@@ -32,6 +32,7 @@
             this.btnYes = new System.Windows.Forms.Button();
             this.btnNo = new System.Windows.Forms.Button();
             this.chkHard = new System.Windows.Forms.CheckBox();
+            this.lblCounter = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblWord
@@ -75,11 +76,22 @@
             this.chkHard.Text = "困难";
             this.chkHard.UseVisualStyleBackColor = true;
             // 
+            // lblCounter
+            // 
+            this.lblCounter.AutoSize = true;
+            this.lblCounter.Font = new System.Drawing.Font("更纱黑体 SC", 10.71429F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblCounter.Location = new System.Drawing.Point(771, 201);
+            this.lblCounter.Name = "lblCounter";
+            this.lblCounter.Size = new System.Drawing.Size(25, 36);
+            this.lblCounter.TabIndex = 4;
+            this.lblCounter.Text = "/";
+            // 
             // WordCheckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 307);
+            this.ClientSize = new System.Drawing.Size(947, 307);
+            this.Controls.Add(this.lblCounter);
             this.Controls.Add(this.chkHard);
             this.Controls.Add(this.btnNo);
             this.Controls.Add(this.btnYes);
@@ -87,6 +99,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "WordCheckForm";
             this.Text = "WordCheckForm";
+            this.Load += new System.EventHandler(this.WordCheckForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,5 +111,6 @@
         private System.Windows.Forms.Button btnYes;
         private System.Windows.Forms.Button btnNo;
         private System.Windows.Forms.CheckBox chkHard;
+        private System.Windows.Forms.Label lblCounter;
     }
 }
